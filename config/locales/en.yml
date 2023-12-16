@@ -30,10 +30,4 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  # Common
-  edit: "Edit"
-  characters_minimum: "characters minimum"
-  unhappy: "Unhappy?"
-  # Register page
-  waiting_for_confirmation: "Currently waiting confirmation for: "
-  cancel_account: "Cancel my account"
+  hello: "Hello world"
