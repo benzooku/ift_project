@@ -7,6 +7,6 @@ Rails.application.routes.draw do
     get '/:locale' => 'homepage#index'
     root 'homepage#index'
     devise_for :users
-    get '/:locale/homepage/', to: 'homepage#index'
+    get 'homepage', to: 'homepage#index'
   end
 end
