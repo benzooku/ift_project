@@ -56,16 +56,21 @@ sudo service postgresql start
 ```
 PostgreSQL muss bei jedem Systemstart manuell gestartet werden.
 
+Erstelle einen PostgreSQL User für den Server:
 ```shell
 sudo -u postgres createuser rails_server -s
 #Suche dir ein Passwort aus.
 sudo -u postgres psql
-postgres=# \password *Passwort*
+postgres=# \password rails_server
 ```
+Um einen eigenen User für den Server zu haben musst du vielleicht deine Postgres Einstellungen ändern.
+Hier einen Eintrag dazu: [Stack Overflow](https://stackoverflow.com/questions/18664074/getting-error-peer-authentication-failed-for-user-postgres-when-trying-to-ge)
+
 Um die Postgres Konsole zu verslassen:
 ```shell
 postgres=# exit
 ```
+
 Jetzt musst du das Passwort als Systemvariable speichern:
 ```shell
 export DATABASE_PASSWORD=*Dein Passwort*
