@@ -39,6 +39,17 @@ Klone dieses Repo:
 git clone https://github.com/benzooku/ift_project.git
 cd ift_project
 ```
+Erstelle die Datei ".env" in /ift_project
+Inhalt:
+```env
+POSTGRES_NAME=proxima_development
+POSTGRES_NAME_PRODUCTION=proxima_prdoduction
+POSTGRES_USER=proxima
+POSTGRES_PASSWORD=<Hier ein Passwort eingeben>
+POSTGRES_HOST=database
+REDIS_HOST=redis
+```
+
 Starte die Docker mit docker-compose
 ```shell
 docker-compose up -d
