@@ -19,3 +19,4 @@ RUN bundle install
 COPY package.json yarn.lock ./
 
 COPY . ./
+

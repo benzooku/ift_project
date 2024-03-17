@@ -13,6 +13,11 @@ Wenn du noch kein Docker installiert hast folge diesem Guide:
 Windows:
 https://docs.docker.com/desktop/wsl/
 
+```shell
+sudo usermod -aG docker $USER
+newgrp docker
+```
+
 Linux:
 https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-20-04
 
@@ -52,7 +57,7 @@ REDIS_HOST=redis
 
 Starte die Docker mit docker-compose
 ```shell
-docker-compose up -d
+docker-compose up
 ```
 Fertig!
 
@@ -67,3 +72,12 @@ docker-compose down
 Drücke rechts unten auf Reopen in Container.
 
 Falls der server nicht in Dev-Mode läuft, drücke links unten auf "Dev Container: Rails" und dann auf Rebuild Container
+
+
+# Troubleshooting
+Wenn nach dem Starten des Servers diese Meldung kommt:
+"exec: entrypoints/docker-entrypoint.sh, no file or directory"
+
+https://stackoverflow.com/questions/39525417/visual-studio-code-how-to-show-line-endings/39532890#39532890
+
+Datei Codierung der .sh-Dateien in /entrypoints muss LF sein
