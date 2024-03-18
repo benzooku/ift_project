@@ -12,7 +12,7 @@ Wenn du noch kein Docker installiert hast folge diesem Guide:
 
 Windows:
 https://docs.docker.com/desktop/wsl/
-
+Führe nach der installation in wsl aus:
 ```shell
 sudo usermod -aG docker $USER
 newgrp docker
