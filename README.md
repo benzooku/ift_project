@@ -12,9 +12,12 @@ Wenn du noch kein Docker installiert hast folge diesem Guide:
 
 Windows:
 https://docs.docker.com/desktop/wsl/
-Führe nach der installation in wsl aus:
+
+Führe nach der Installation in WSL aus:
 ```shell
 sudo usermod -aG docker $USER
+```
+```shell
 newgrp docker
 ```
 
@@ -81,3 +84,4 @@ Wenn nach dem Starten des Servers diese Meldung kommt:
 https://stackoverflow.com/questions/39525417/visual-studio-code-how-to-show-line-endings/39532890#39532890
 
 Datei Codierung der .sh-Dateien in /entrypoints muss LF sein
+Baue danach die

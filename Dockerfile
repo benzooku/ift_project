@@ -10,7 +10,7 @@ RUN gem install bundler -v 2.4.18
 
 WORKDIR /app
 
-COPY Gemfile Gemfile.lock ./
+COPY Gemfile ./
 
 RUN bundle config build.nokogiri --use-system-libraries
 
