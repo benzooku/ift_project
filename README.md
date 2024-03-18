@@ -3,7 +3,7 @@ Projekt für den IFT Unterricht an der GHSE
 
 ## Funktion
 Proximaplan ist eine Projektmanagement-Website mit simplem Design.
-Das Ziel derWebsite ist Projektmanagement so einfach wie möglich zu machen.
+Das Ziel der Website ist, Projektmanagement so einfach wie möglich zu machen.
 
 # Quick-Start Guide
 
