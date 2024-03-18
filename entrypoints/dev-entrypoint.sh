@@ -7,7 +7,7 @@ if [ -f tmp/pids/server.pid ]; then
 fi
 
 bundle exec rake db:setup db:migrate
+bundle exec rake tailwindcss:watch
 bundle exec rails s -b 0.0.0.0
-bundle exec ./bin/dev
 bundle exec sleep 1d
 
