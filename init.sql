@@ -1,2 +1,0 @@
-CREATE USER proxima;
-ALTER USER proxima WITH SUPERUSER;

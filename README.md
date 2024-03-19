@@ -69,7 +69,7 @@ Fertig!
 docker-compose down
 ```
 
-# Developement
+# Development
 
 Öffne den Ordner in VS Code (VS Code braucht diese Extension: https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)
 Drücke rechts unten auf Reopen in Container.
@@ -84,4 +84,7 @@ Wenn nach dem Starten des Servers diese Meldung kommt:
 https://stackoverflow.com/questions/39525417/visual-studio-code-how-to-show-line-endings/39532890#39532890
 
 Datei Codierung der .sh-Dateien in /entrypoints muss LF sein
-Baue danach die
+Baue nach dem ändern die Docker neu
+```shell
+docker-compose up --build
+```
