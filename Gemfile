@@ -64,19 +64,18 @@ group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem 'web-console'
 
-  gem 'rdoc'
+  gem 'rdoc', require: false
 
-  gem 'solargraph'
+  gem 'solargraph', require: false
 
-  gem 'rubocop'
-  gem 'rubocop-packaging'
-  gem 'rubocop-performance'
-  gem 'rubocop-rspec'
-  gem 'rubocop-shopify'
-  gem 'rubocop-thread_safety'
-  gem 'ruby-lsp'
+  gem 'rubocop', require: false
+  gem 'rubocop-packaging', require: false
+  gem 'rubocop-performance', require: false
+  gem 'rubocop-rspec', require: false
+  gem 'rubocop-shopify', require: false
+  gem 'rubocop-thread_safety', require: false
+  gem 'rubocop-rails', require: false
 
-  gem 'foreman'
 
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"

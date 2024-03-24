@@ -25,13 +25,19 @@
 				"aki77.html-erb",
 				"VisualStudioExptTeam.vscodeintellicode",
 				"esbenp.prettier-vscode",
-				"Shopify.ruby-lsp",
 				"castwide.solargraph",
 				"bradlc.vscode-tailwindcss",
 				"redhat.vscode-yaml",
 				"ms-azuretools.vscode-docker",
-				"mutantdino.resourcemonitor"
-			]
+				"mutantdino.resourcemonitor",
+				"KoichiSasada.vscode-rdbg",
+				"aki77.rails-db-schema",
+				"bung87.rails",
+				"Shopify.ruby-lsp"
+			],
+			"settings": {
+				"rubyLsp.rubyVersionManager": "none"
+			}
 		}
 	}
 
