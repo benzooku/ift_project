@@ -7,6 +7,3 @@ de:
   waiting_for_confirmation: "Warte auf Bestätigung für: "
   cancel_account: "Mein Konto kündigen"
 
-  #Permissions
-  adminPerm: "Administrator"
-  adminPermDesc: "Giebt alle Rechte!!!"

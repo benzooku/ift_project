@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_03_22_183309) do
+ActiveRecord::Schema[7.1].define(version: 2024_03_29_091600) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -40,6 +40,45 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_22_183309) do
     t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+  end
+
+  create_table "groupings", force: :cascade do |t|
+    t.bigint "worker_id"
+    t.bigint "group_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["group_id"], name: "index_groupings_on_group_id"
+    t.index ["worker_id"], name: "index_groupings_on_worker_id"
+  end
+
+  create_table "groups", force: :cascade do |t|
+    t.string "name", null: false
+    t.text "description"
+    t.bigint "project_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_groups_on_project_id"
+  end
+
+  create_table "message_recipients", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "group_id"
+    t.bigint "message_id"
+    t.boolean "is_read"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["group_id"], name: "index_message_recipients_on_group_id"
+    t.index ["message_id"], name: "index_message_recipients_on_message_id"
+    t.index ["user_id"], name: "index_message_recipients_on_user_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.text "content", null: false
+    t.bigint "user_id"
+    t.boolean "is_ping"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "permissions", force: :cascade do |t|
