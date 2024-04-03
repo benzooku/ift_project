@@ -5,4 +5,8 @@ class Project < ApplicationRecord
   has_many :users, through: :workers
 
   has_many :roles, dependent: :destroy
+
+  has_many :tasks, dependent: :destroy
+
+  has_many :groups, dependent: :destroy
 end

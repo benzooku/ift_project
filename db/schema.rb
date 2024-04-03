@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_03_29_091600) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_03_095526) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -40,6 +40,15 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_29_091600) do
     t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+  end
+
+  create_table "assignments", force: :cascade do |t|
+    t.bigint "worker_id", null: false
+    t.bigint "task_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["task_id"], name: "index_assignments_on_task_id"
+    t.index ["worker_id"], name: "index_assignments_on_worker_id"
   end
 
   create_table "groupings", force: :cascade do |t|
@@ -121,6 +130,38 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_29_091600) do
     t.index ["project_id"], name: "index_roles_on_project_id"
   end
 
+  create_table "task_dependencies", force: :cascade do |t|
+    t.bigint "task_id", null: false
+    t.bigint "base_task_id", null: false
+    t.boolean "required", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["base_task_id"], name: "index_task_dependencies_on_base_task_id"
+    t.index ["task_id"], name: "index_task_dependencies_on_task_id"
+  end
+
+  create_table "task_notes", force: :cascade do |t|
+    t.bigint "task_id", null: false
+    t.bigint "worker_id", null: false
+    t.text "content", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["task_id"], name: "index_task_notes_on_task_id"
+    t.index ["worker_id"], name: "index_task_notes_on_worker_id"
+  end
+
+  create_table "tasks", force: :cascade do |t|
+    t.string "name", null: false
+    t.text "description"
+    t.datetime "expected_finish_date", null: false
+    t.datetime "finish_date"
+    t.datetime "start_date"
+    t.bigint "project_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_tasks_on_project_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "name", default: "", null: false
     t.string "email", default: "", null: false
@@ -156,4 +197,5 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_29_091600) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "task_dependencies", "tasks", column: "base_task_id"
 end

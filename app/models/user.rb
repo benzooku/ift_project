@@ -8,6 +8,10 @@ class User < ApplicationRecord
 
   validates :password, presence: true, length: { in: 6..20 }
 
-  belongs_to :project
+  has_many :workers, dependent: :destroy
+  has_many :messages
+  has_many :message_recipients
 
+  has_many :groupings, through: :workers
+  has_many :groups, through: :groupings
 end
