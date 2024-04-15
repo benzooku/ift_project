@@ -25,7 +25,6 @@
 				"aki77.html-erb",
 				"VisualStudioExptTeam.vscodeintellicode",
 				"esbenp.prettier-vscode",
-				"castwide.solargraph",
 				"bradlc.vscode-tailwindcss",
 				"redhat.vscode-yaml",
 				"ms-azuretools.vscode-docker",
@@ -33,7 +32,8 @@
 				"KoichiSasada.vscode-rdbg",
 				"aki77.rails-db-schema",
 				"bung87.rails",
-				"Shopify.ruby-lsp"
+				"Shopify.ruby-lsp",
+				"sorbet.sorbet-vscode-extension"
 			],
 			"settings": {
 				"rubyLsp.rubyVersionManager": "none"

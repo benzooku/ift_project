@@ -4,10 +4,13 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
-  scope '(:locale)', locale: /en|de/ do
+  scope '(:locale)', locale: /#{I18n.available_locales.join('|')}/ do
     get '/:locale' => 'homepage#index'
     root 'homepage#index'
+
     devise_for :users
     get 'homepage', to: 'homepage#index'
+
+    get 'projects/:id', to: 'projects#index'
   end
 end

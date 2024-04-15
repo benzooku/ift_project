@@ -76,10 +76,6 @@ Drücke rechts unten auf Reopen in Container.
 
 Falls der server nicht in Dev-Mode läuft, drücke links unten auf "Dev Container: Rails" und dann auf Rebuild Container
 
-Um Ruby LSP zu nutzen muss du noch das "install-rvm.sh" script ausführen
-```shell
-./dev-scripts/install-rvm.sh
-```
 
 
 # Troubleshooting
