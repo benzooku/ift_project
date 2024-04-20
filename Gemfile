@@ -31,7 +31,7 @@ gem 'tailwindcss-rails'
 gem 'jbuilder'
 
 # Use Redis adapter to run Action Cable in production
-gem "redis", "~> 5.1"
+gem 'redis', '~> 5.1'
 
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
@@ -66,19 +66,19 @@ group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem 'web-console'
 
-  gem 'rdoc', require: false
+  gem 'rdoc'
 
-  gem 'tapioca', require: false
   gem 'solargraph', require: false
+  gem 'sorbet'
+  gem 'tapioca'
 
   gem 'rubocop', require: false
   gem 'rubocop-packaging', require: false
   gem 'rubocop-performance', require: false
+  gem 'rubocop-rails', require: false
   gem 'rubocop-rspec', require: false
   gem 'rubocop-shopify', require: false
   gem 'rubocop-thread_safety', require: false
-  gem 'rubocop-rails', require: false
-
 
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"

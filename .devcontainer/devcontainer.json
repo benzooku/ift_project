@@ -31,12 +31,16 @@
 				"mutantdino.resourcemonitor",
 				"KoichiSasada.vscode-rdbg",
 				"aki77.rails-db-schema",
-				"bung87.rails",
 				"Shopify.ruby-lsp",
-				"sorbet.sorbet-vscode-extension"
+				"sorbet.sorbet-vscode-extension",
+				"castwide.solargraph",
+				"rubocop.vscode-rubocop",
+				"misogi.ruby-rubocop"
 			],
 			"settings": {
-				"rubyLsp.rubyVersionManager": "none"
+				"rubyLsp.rubyVersionManager": "none",
+				"sorbet.enabled": true,
+				"sorbet.highlightUntyped": "everywhere-but-tests"
 			}
 		}
 	}
