@@ -39,8 +39,8 @@
 			],
 			"settings": {
 				"rubyLsp.rubyVersionManager": "none",
-				"sorbet.enabled": true,
-				"sorbet.highlightUntyped": "everywhere-but-tests"
+				//"sorbet.enabled": true,
+				//"sorbet.highlightUntyped": "everywhere-but-tests"
 			}
 		}
 	}

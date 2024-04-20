@@ -69,8 +69,8 @@ group :development do
   gem 'rdoc'
 
   gem 'solargraph', require: false
-  gem 'sorbet'
-  gem 'tapioca'
+  gem 'sorbet', require: false
+  gem 'tapioca', require: false
 
   gem 'rubocop', require: false
   gem 'rubocop-packaging', require: false
