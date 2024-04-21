@@ -1,4 +1,7 @@
 #!/usr/bin/env ruby
+# rubocop:disable Style/StringLiterals
 APP_PATH = File.expand_path("../config/application", __dir__)
 require_relative "../config/boot"
 require "rails/commands"
+
+

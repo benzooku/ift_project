@@ -35,12 +35,12 @@
 				"sorbet.sorbet-vscode-extension",
 				"castwide.solargraph",
 				"rubocop.vscode-rubocop",
-				"misogi.ruby-rubocop"
+				"LoranKloeze.ruby-rubocop-revived"
 			],
 			"settings": {
 				"rubyLsp.rubyVersionManager": "none",
-				//"sorbet.enabled": true,
-				//"sorbet.highlightUntyped": "everywhere-but-tests"
+				"sorbet.enabled": true,
+				"sorbet.highlightUntyped": "everywhere-but-tests"
 			}
 		}
 	}

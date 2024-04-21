@@ -6,4 +6,13 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-Permission.create([{name: "adminPerm", description: "adminPermDesc"}])
+Permission.create(name: 'adminPerm', description: 'adminPermDesc')
+
+user = User.new(name: 'test', first_name: 'test', email: 'test@gmail.com',
+                password: 'topsecret', password_confirmation: 'topsecret')
+user.skip_confirmation!
+user.save!
+
+project = Project.create(name: 'test')
+
+worker = Worker.create(user_id: user.id, project_id: project.id)

@@ -52,8 +52,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_03_095526) do
   end
 
   create_table "groupings", force: :cascade do |t|
-    t.bigint "worker_id"
-    t.bigint "group_id"
+    t.bigint "worker_id", null: false
+    t.bigint "group_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["group_id"], name: "index_groupings_on_group_id"
@@ -63,17 +63,17 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_03_095526) do
   create_table "groups", force: :cascade do |t|
     t.string "name", null: false
     t.text "description"
-    t.bigint "project_id"
+    t.bigint "project_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["project_id"], name: "index_groups_on_project_id"
   end
 
   create_table "message_recipients", force: :cascade do |t|
-    t.bigint "user_id"
-    t.bigint "group_id"
-    t.bigint "message_id"
-    t.boolean "is_read"
+    t.bigint "user_id", null: false
+    t.bigint "group_id", null: false
+    t.bigint "message_id", null: false
+    t.boolean "is_read", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["group_id"], name: "index_message_recipients_on_group_id"
@@ -83,8 +83,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_03_095526) do
 
   create_table "messages", force: :cascade do |t|
     t.text "content", null: false
-    t.bigint "user_id"
-    t.boolean "is_ping"
+    t.bigint "user_id", null: false
+    t.boolean "is_ping", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_messages_on_user_id"
@@ -107,14 +107,14 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_03_095526) do
   end
 
   create_table "projects", force: :cascade do |t|
-    t.string "name", default: "", null: false
+    t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "role_assignments", force: :cascade do |t|
-    t.bigint "worker_id"
-    t.bigint "role_id"
+    t.bigint "worker_id", null: false
+    t.bigint "role_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["role_id"], name: "index_role_assignments_on_role_id"
@@ -164,6 +164,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_03_095526) do
 
   create_table "users", force: :cascade do |t|
     t.string "name", default: "", null: false
+    t.string "first_name", default: "", null: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -174,21 +175,21 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_03_095526) do
     t.datetime "last_sign_in_at"
     t.string "current_sign_in_ip"
     t.string "last_sign_in_ip"
+    t.boolean "is_online", default: false
     t.string "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string "unconfirmed_email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "first_name"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   create_table "workers", force: :cascade do |t|
-    t.bigint "user_id"
-    t.bigint "project_id"
+    t.bigint "user_id", null: false
+    t.bigint "project_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["project_id"], name: "index_workers_on_project_id"
