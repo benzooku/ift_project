@@ -32,8 +32,6 @@
 				"KoichiSasada.vscode-rdbg",
 				"aki77.rails-db-schema",
 				"Shopify.ruby-lsp",
-				"sorbet.sorbet-vscode-extension",
-				"castwide.solargraph",
 				"rubocop.vscode-rubocop",
 				"LoranKloeze.ruby-rubocop-revived"
 			],
