@@ -15,4 +15,5 @@ user.save!
 
 project = Project.create(name: 'test')
 
-worker = Worker.create(user_id: user.id, project_id: project.id)
+worker = Worker.new(user_id: user.id, project_id: project.id)
+worker.save!

@@ -55,8 +55,8 @@ de:
       unlocked: "Ihr Konto wurde erfolgreich entsperrt. Bitte melden Sie sich an, um fortzufahren."
   errors:
     messages:
-      already_confirmed: "wurde bereits bestätigt, bitte versuchen Sie sich anzumelden"
-      confirmation_period_expired: "muss innerhalb von %{period} bestätigt werden, bitte fordern Sie eine neue an"
+      already_confirmed: "Wurde bereits bestätigt, bitte versuchen Sie sich anzumelden"
+      confirmation_period_expired: "Muss innerhalb von %{period} bestätigt werden, bitte fordern Sie eine neue an"
       expired: "ist abgelaufen, bitte fordern Sie eine neue an"
       not_found: "nicht gefunden"
       not_locked: "war nicht gesperrt"

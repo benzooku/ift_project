@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
 
   protected
 
-  def sign_in_gate
+  def sign_in_gate!
     session[:fall_back_path] = request.path
     authenticate_user!
   end

@@ -1,0 +1,10 @@
+<table class="table-auto">
+    <% for @project in @projects do%>
+        <tr>
+            <td>
+                <a href="<%= projects_url(locale) + '/' + @project.id.to_s %>"><%= @project.name %></a>
+            </td>
+        </tr>
+    <% end %>
+
+</table>

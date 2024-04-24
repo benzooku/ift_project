@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
-  scope '(:locale)', locale: /en|de/ do
+  scope '/(:locale)', locale: /en|de/ do
     root 'landing#index'
 
     devise_for :users, module: 'users'
@@ -15,8 +15,10 @@ Rails.application.routes.draw do
 
     get 'landing', to: 'landing#index'
 
-    get 'projects/:id', to: 'projects#index'
-    get 'projects', to: 'projects#list'
+    get '/projects/new', to: 'projects#new'
+    get '/projects/:id/', to: 'projects#show'
+    get '/projects', to: 'projects#index'
+    post '/projects', to: 'projects#create'
 
     get 'landing', to: 'landing#index'
   end
