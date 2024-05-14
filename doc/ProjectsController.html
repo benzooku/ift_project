@@ -72,9 +72,12 @@
   <h3>Methods</h3>
 
   <ul class="link-list" role="directory">
+    <li ><a href="#method-i-create">#create</a>
     <li ><a href="#method-i-index">#index</a>
-    <li ><a href="#method-i-list">#list</a>
     <li ><a href="#method-i-new">#new</a>
+    <li ><a href="#method-i-project_default_associations">#project_default_associations</a>
+    <li ><a href="#method-i-project_params">#project_params</a>
+    <li ><a href="#method-i-show">#show</a>
   </ul>
 </div>
 
@@ -88,6 +91,8 @@
 
   <section class="description">
     
+<p>typed: true</p>
+
   </section>
 
   <section id="5Buntitled-5D" class="documentation-section">
@@ -101,6 +106,37 @@
          <h3>Public Instance Methods</h3>
        </header>
 
+      <div id="method-i-create" class="method-detail ">
+        <div class="method-header">
+          <div class="method-heading">
+            <span class="method-name">create</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+        </div>
+
+        <div class="method-description">
+          
+
+          <div class="method-source-code" id="create-source">
+            <pre><span class="ruby-comment"># File app/controllers/projects_controller.rb, line 19</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">create</span>
+  <span class="ruby-ivar">@project</span> = <span class="ruby-constant">Project</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">project_params</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-ivar">@project</span>.<span class="ruby-identifier">save</span>
+    <span class="ruby-identifier">project_default_associations</span>(<span class="ruby-ivar">@project</span>, <span class="ruby-identifier">current_user</span>)
+    <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">projects_path</span>(<span class="ruby-value">locale:</span> <span class="ruby-identifier">locale</span>) <span class="ruby-operator">+</span> <span class="ruby-string">&#39;/&#39;</span> <span class="ruby-operator">+</span><span class="ruby-ivar">@project</span>.<span class="ruby-identifier">id</span>.<span class="ruby-identifier">to_s</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-ivar">@project</span>.<span class="ruby-identifier">destroy</span>
+    <span class="ruby-ivar">@worker</span>.<span class="ruby-identifier">destroy</span>
+    <span class="ruby-identifier">render</span> <span class="ruby-value">:new</span>, <span class="ruby-value">status:</span> <span class="ruby-value">:unprocessable_entity</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
       <div id="method-i-index" class="method-detail ">
         <div class="method-header">
           <div class="method-heading">
@@ -111,42 +147,14 @@
         </div>
 
         <div class="method-description">
-          
+          <p>Giebt Liste von Projekten zurück, mit denen der Nutzer assoziiert ist Nutzer muss angemeldet sein, um diese Seite aufzurufen</p>
+
+<p>Wenn nicht angemeldet, führt auf Anmeldet seite weiter Sichert angefragte Seite, um nach anmeldung zurückzuführen</p>
 
           <div class="method-source-code" id="index-source">
-            <pre><span class="ruby-comment"># File app/controllers/projects_controller.rb, line 3</span>
+            <pre><span class="ruby-comment"># File app/controllers/projects_controller.rb, line 11</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">index</span>
-  <span class="ruby-keyword">begin</span>
-    <span class="ruby-ivar">@project</span> = <span class="ruby-constant">Project</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
-  <span class="ruby-keyword">rescue</span> <span class="ruby-constant">ActiveRecord</span><span class="ruby-operator">::</span><span class="ruby-constant">RecordNotFound</span>
-    <span class="ruby-identifier">flash</span>.<span class="ruby-identifier">alert</span> = <span class="ruby-constant">I18n</span>.<span class="ruby-identifier">t</span> <span class="ruby-string">&#39;projects.notFound&#39;</span>
-    <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">projects_url</span>
-  <span class="ruby-keyword">end</span>
-<span class="ruby-keyword">end</span></pre>
-          </div>
-        </div>
-
-
-      </div>
-
-      <div id="method-i-list" class="method-detail ">
-        <div class="method-header">
-          <div class="method-heading">
-            <span class="method-name">list</span><span
-              class="method-args">()</span>
-            <span class="method-click-advice">click to toggle source</span>
-          </div>
-        </div>
-
-        <div class="method-description">
-          
-
-          <div class="method-source-code" id="list-source">
-            <pre><span class="ruby-comment"># File app/controllers/projects_controller.rb, line 16</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">list</span>
-  <span class="ruby-keyword">if</span> <span class="ruby-identifier">user_signed_in?</span>
-    <span class="ruby-ivar">@projects</span> = <span class="ruby-identifier">current_user</span>.<span class="ruby-identifier">projects</span>.<span class="ruby-identifier">find</span>(<span class="ruby-value">:all</span>)
-  <span class="ruby-keyword">end</span>
+  <span class="ruby-ivar">@projects</span> = <span class="ruby-identifier">current_user</span>.<span class="ruby-identifier">projects</span>.<span class="ruby-identifier">all</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
         </div>
@@ -167,9 +175,93 @@
           
 
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File app/controllers/projects_controller.rb, line 12</span>
+            <pre><span class="ruby-comment"># File app/controllers/projects_controller.rb, line 15</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">new</span>
+  <span class="ruby-ivar">@project</span> = <span class="ruby-constant">Project</span>.<span class="ruby-identifier">new</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
 
+
+      </div>
+
+      <div id="method-i-show" class="method-detail ">
+        <div class="method-header">
+          <div class="method-heading">
+            <span class="method-name">show</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+        </div>
+
+        <div class="method-description">
+          <p>Gibt Projekt anhand von ID weiter Nimmt ID in URL-Parameter</p>
+
+          <div class="method-source-code" id="show-source">
+            <pre><span class="ruby-comment"># File app/controllers/projects_controller.rb, line 34</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">show</span>
+  <span class="ruby-ivar">@project</span> = <span class="ruby-identifier">current_user</span>.<span class="ruby-identifier">projects</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
+<span class="ruby-keyword">rescue</span> <span class="ruby-constant">ActiveRecord</span><span class="ruby-operator">::</span><span class="ruby-constant">RecordNotFound</span>
+  <span class="ruby-identifier">flash</span>.<span class="ruby-identifier">alert</span> = <span class="ruby-constant">I18n</span>.<span class="ruby-identifier">t</span> <span class="ruby-string">&#39;projects.notFound&#39;</span>
+  <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">projects_url</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+    </section>
+
+     <section id="protected-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Protected Instance Methods</h3>
+       </header>
+
+      <div id="method-i-project_default_associations" class="method-detail ">
+        <div class="method-header">
+          <div class="method-heading">
+            <span class="method-name">project_default_associations</span><span
+              class="method-args">(prj, usr)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+        </div>
+
+        <div class="method-description">
+          <p>Generiert standart Datenbank-Einträge für ein neues Projekt Datenbank &lt;= <a href="Worker.html"><code>Worker</code></a>, Role(Admin), <a href="Permit.html"><code>Permit</code></a>, RolesAssignment</p>
+
+<p>@param [Project] prj das zu verwendende Projekt. @param [User] usr der zu verwendende <a href="User.html"><code>User</code></a>.</p>
+
+          <div class="method-source-code" id="project_default_associations-source">
+            <pre><span class="ruby-comment"># File app/controllers/projects_controller.rb, line 48</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">project_default_associations</span>(<span class="ruby-identifier">prj</span>, <span class="ruby-identifier">usr</span>)
+  <span class="ruby-identifier">worker</span> = <span class="ruby-constant">Worker</span>.<span class="ruby-identifier">create</span>(<span class="ruby-value">project_id:</span> <span class="ruby-identifier">prj</span>.<span class="ruby-identifier">id</span>, <span class="ruby-value">user_id:</span> <span class="ruby-identifier">usr</span>.<span class="ruby-identifier">id</span>)
+  <span class="ruby-identifier">role</span> = <span class="ruby-constant">Role</span>.<span class="ruby-identifier">create</span>(<span class="ruby-value">project_id:</span> <span class="ruby-identifier">prj</span>.<span class="ruby-identifier">id</span>, <span class="ruby-value">name:</span> <span class="ruby-string">&#39;Admin&#39;</span>, <span class="ruby-value">rank:</span> <span class="ruby-value">1000</span>)
+  <span class="ruby-identifier">permit</span> = <span class="ruby-constant">Permit</span>.<span class="ruby-identifier">create</span>(<span class="ruby-value">role_id:</span> <span class="ruby-identifier">role</span>.<span class="ruby-identifier">id</span>, <span class="ruby-value">permission_id:</span> <span class="ruby-value">1</span>)
+  <span class="ruby-identifier">role_assignment</span> = <span class="ruby-constant">RoleAssignment</span>.<span class="ruby-identifier">create</span>(<span class="ruby-value">worker_id:</span> <span class="ruby-identifier">worker</span>.<span class="ruby-identifier">id</span>, <span class="ruby-value">role_id:</span> <span class="ruby-identifier">role</span>.<span class="ruby-identifier">id</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div id="method-i-project_params" class="method-detail ">
+        <div class="method-header">
+          <div class="method-heading">
+            <span class="method-name">project_params</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+        </div>
+
+        <div class="method-description">
+          <p>Validiert Parameter von POST-Request auf für <a href="Project.html"><code>Project</code></a> benötigte</p>
+
+          <div class="method-source-code" id="project_params-source">
+            <pre><span class="ruby-comment"># File app/controllers/projects_controller.rb, line 56</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">project_params</span>
+  <span class="ruby-identifier">params</span>.<span class="ruby-identifier">require</span>(<span class="ruby-value">:project</span>).<span class="ruby-identifier">permit</span>(<span class="ruby-value">:name</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
         </div>

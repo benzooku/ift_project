@@ -4,21 +4,21 @@
 <head>
 <meta charset="UTF-8">
 
-<title>class CreateProjects - RDoc Documentation</title>
+<title>class Users::SessionsController - RDoc Documentation</title>
 
 <script type="text/javascript">
-  var rdoc_rel_prefix = "./";
-  var index_rel_prefix = "./";
+  var rdoc_rel_prefix = "../";
+  var index_rel_prefix = "../";
 </script>
 
-<script src="./js/navigation.js" defer></script>
-<script src="./js/search.js" defer></script>
-<script src="./js/search_index.js" defer></script>
-<script src="./js/searcher.js" defer></script>
-<script src="./js/darkfish.js" defer></script>
+<script src="../js/navigation.js" defer></script>
+<script src="../js/search.js" defer></script>
+<script src="../js/search_index.js" defer></script>
+<script src="../js/searcher.js" defer></script>
+<script src="../js/darkfish.js" defer></script>
 
-<link href="./css/fonts.css" rel="stylesheet">
-<link href="./css/rdoc.css" rel="stylesheet">
+<link href="../css/fonts.css" rel="stylesheet">
+<link href="../css/rdoc.css" rel="stylesheet">
 
 
 <body id="top" role="document" class="class">
@@ -26,13 +26,13 @@
   <div id="project-navigation">
     <div id="home-section" role="region" title="Quick navigation" class="nav-section">
   <h2>
-    <a href="./index.html" rel="home">Home</a>
+    <a href="../index.html" rel="home">Home</a>
   </h2>
 
   <div id="table-of-contents-navigation">
-    <a href="./table_of_contents.html#pages">Pages</a>
-    <a href="./table_of_contents.html#classes">Classes</a>
-    <a href="./table_of_contents.html#methods">Methods</a>
+    <a href="../table_of_contents.html#pages">Pages</a>
+    <a href="../table_of_contents.html#classes">Classes</a>
+    <a href="../table_of_contents.html#methods">Methods</a>
   </div>
 </div>
 
@@ -61,7 +61,7 @@
 <div id="parent-class-section" class="nav-section">
   <h3>Parent</h3>
 
-  <p class="link">ActiveRecord::Migration[7.1]
+  <p class="link">Devise::SessionsController
 </div>
 
     
@@ -72,16 +72,16 @@
   <h3>Methods</h3>
 
   <ul class="link-list" role="directory">
-    <li ><a href="#method-i-change">#change</a>
+    <li ><a href="#method-i-after_sign_in_path_for">#after_sign_in_path_for</a>
   </ul>
 </div>
 
   </div>
 </nav>
 
-<main role="main" aria-labelledby="class-CreateProjects">
-  <h1 id="class-CreateProjects" class="class">
-    class CreateProjects
+<main role="main" aria-labelledby="class-Users::SessionsController">
+  <h1 id="class-Users::SessionsController" class="class">
+    class Users::SessionsController
   </h1>
 
   <section class="description">
@@ -99,29 +99,24 @@
          <h3>Public Instance Methods</h3>
        </header>
 
-      <div id="method-i-change" class="method-detail ">
+      <div id="method-i-after_sign_in_path_for" class="method-detail ">
         <div class="method-header">
           <div class="method-heading">
-            <span class="method-name">change</span><span
-              class="method-args">()</span>
+            <span class="method-name">after_sign_in_path_for</span><span
+              class="method-args">(resource)</span>
             <span class="method-click-advice">click to toggle source</span>
           </div>
         </div>
 
         <div class="method-description">
-          
+          <p>Gibt die URL vor der Anmeldung zurück, sofern gespeichert</p>
 
-          <div class="method-source-code" id="change-source">
-            <pre><span class="ruby-comment"># File db/migrate/20240319145423_create_projects.rb, line 2</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">change</span>
-  <span class="ruby-identifier">create_table</span> <span class="ruby-value">:projects</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">t</span><span class="ruby-operator">|</span>
-    <span class="ruby-comment">## Information</span>
-    <span class="ruby-identifier">t</span>.<span class="ruby-identifier">string</span> <span class="ruby-value">:name</span>, <span class="ruby-value">null:</span> <span class="ruby-keyword">false</span>
-
-    <span class="ruby-identifier">t</span>.<span class="ruby-identifier">timestamps</span> <span class="ruby-value">null:</span> <span class="ruby-keyword">false</span>
-  <span class="ruby-keyword">end</span>
-
-  <span class="ruby-comment"># add_index :users, :unlock_token,         unique: tru</span>
+          <div class="method-source-code" id="after_sign_in_path_for-source">
+            <pre><span class="ruby-comment"># File app/controllers/users/sessions_controller.rb, line 29</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">after_sign_in_path_for</span>(<span class="ruby-identifier">resource</span>)
+  <span class="ruby-identifier">path</span> = <span class="ruby-identifier">session</span>[<span class="ruby-value">:fall_back_path</span>]
+  <span class="ruby-identifier">session</span>[<span class="ruby-value">:fall_back_path</span>] = <span class="ruby-keyword">nil</span>
+  <span class="ruby-identifier">path</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">root_path</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
         </div>

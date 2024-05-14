@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 
-<title>class CreateProjects - RDoc Documentation</title>
+<title>class CreateWorker - RDoc Documentation</title>
 
 <script type="text/javascript">
   var rdoc_rel_prefix = "./";
@@ -79,9 +79,9 @@
   </div>
 </nav>
 
-<main role="main" aria-labelledby="class-CreateProjects">
-  <h1 id="class-CreateProjects" class="class">
-    class CreateProjects
+<main role="main" aria-labelledby="class-CreateWorker">
+  <h1 id="class-CreateWorker" class="class">
+    class CreateWorker
   </h1>
 
   <section class="description">
@@ -112,16 +112,13 @@
           
 
           <div class="method-source-code" id="change-source">
-            <pre><span class="ruby-comment"># File db/migrate/20240319145423_create_projects.rb, line 2</span>
+            <pre><span class="ruby-comment"># File db/migrate/20240424154838_create_worker.rb, line 2</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">change</span>
-  <span class="ruby-identifier">create_table</span> <span class="ruby-value">:projects</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">t</span><span class="ruby-operator">|</span>
-    <span class="ruby-comment">## Information</span>
-    <span class="ruby-identifier">t</span>.<span class="ruby-identifier">string</span> <span class="ruby-value">:name</span>, <span class="ruby-value">null:</span> <span class="ruby-keyword">false</span>
-
-    <span class="ruby-identifier">t</span>.<span class="ruby-identifier">timestamps</span> <span class="ruby-value">null:</span> <span class="ruby-keyword">false</span>
+  <span class="ruby-identifier">create_table</span> <span class="ruby-value">:workers</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">t</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">t</span>.<span class="ruby-identifier">belongs_to</span> <span class="ruby-value">:user</span>, <span class="ruby-value">null:</span> <span class="ruby-keyword">false</span>
+    <span class="ruby-identifier">t</span>.<span class="ruby-identifier">belongs_to</span> <span class="ruby-value">:project</span>, <span class="ruby-value">null:</span> <span class="ruby-keyword">false</span>
+    <span class="ruby-identifier">t</span>.<span class="ruby-identifier">timestamps</span>
   <span class="ruby-keyword">end</span>
-
-  <span class="ruby-comment"># add_index :users, :unlock_token,         unique: tru</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
         </div>
