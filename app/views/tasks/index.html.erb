@@ -1,0 +1,10 @@
+<table class="table-auto">
+    <% for @task in @tasks do%>
+        <tr>
+            <td>
+                <a href="<%= tasks_url(locale) + '/' + @task.id.to_s %>"><%= @task.name %></a>
+            </td>
+        </tr>
+    <% end %>
+
+</table>

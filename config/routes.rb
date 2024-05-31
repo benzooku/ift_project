@@ -21,9 +21,9 @@ Rails.application.routes.draw do
     post '/projects', to: 'projects#create'
 
     get '/tasks/new', to: 'tasks#new'
-    get '/tasks/:id/', to: 'projects#show'
-    get '/tasks', to: 'projects#index'
-    post '/tasks', to: 'projects#create'
+    get '/tasks/:id/', to: 'tasks#show'
+    get '/tasks', to: 'tasks#index'
+    post '/tasks', to: 'tasks#create'
 
     get 'landing', to: 'landing#index'
   end
