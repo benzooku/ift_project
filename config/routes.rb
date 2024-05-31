@@ -20,6 +20,11 @@ Rails.application.routes.draw do
     get '/projects', to: 'projects#index'
     post '/projects', to: 'projects#create'
 
+    get '/tasks/new', to: 'tasks#new'
+    get '/tasks/:id/', to: 'projects#show'
+    get '/tasks', to: 'projects#index'
+    post '/tasks', to: 'projects#create'
+
     get 'landing', to: 'landing#index'
   end
   get '/:locale' => 'landing#index'

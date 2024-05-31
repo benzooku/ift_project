@@ -1,5 +1,5 @@
 #typed: true
-#
+
 class ProjectsController < ApplicationController
   before_action :sign_in_gate!
 

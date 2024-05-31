@@ -5,6 +5,11 @@ RUN apt-get update && apt-get install -y \
       watchman \
       yarn
 
+RUN wget 'https://github.com/neovim/neovim/releases/download/stable/nvim.appimage'
+RUN chmod u+x nvim.appimage
+RUN ./nvim.appimage --appimage-extract
+ENV PATH=$PATH:/squashfs-root/usr/bin 
+
 WORKDIR /app
 
 COPY Gemfile ./
