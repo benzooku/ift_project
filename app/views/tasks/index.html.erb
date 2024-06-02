@@ -1,10 +1,11 @@
-<table class="table-auto">
+<%= turbo_frame_tag id="task_list" do %>
+  <table class="table-auto">
     <% for @task in @tasks do%>
-        <tr>
-            <td>
-                <a href="<%= tasks_url(locale) + '/' + @task.id.to_s %>"><%= @task.name %></a>
-            </td>
-        </tr>
+      <tr>
+        <td>
+          <%= link_to @task.name, tasks_path(locale) + '/' + @task.id.to_s, data: {turbo_frame: "_top"} %>
+        </td>
+      </tr>
     <% end %>
-
-</table>
+  </table>
+<% end %>

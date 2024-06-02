@@ -15,6 +15,11 @@ Rails.application.routes.draw do
 
     get 'landing', to: 'landing#index'
 
+
+    get '/projects/new', to: 'projects#new'
+    get '/projects', to: 'projects#index'
+    post '/projects', to: 'projects#create'
+    
     scope '/projects/:project_id/' do
       get '/', to: 'projects#show'
       get '/add_user', to: 'workers#new'
@@ -27,11 +32,6 @@ Rails.application.routes.draw do
       get '/tasks', to: 'tasks#index'
       post '/tasks', to: 'tasks#create'
     end
-
-    get '/projects/new', to: 'projects#new'
-    get '/projects', to: 'projects#index'
-    post '/projects', to: 'projects#create'
-    
 
 
     get 'landing', to: 'landing#index'
