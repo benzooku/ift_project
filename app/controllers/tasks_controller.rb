@@ -17,7 +17,7 @@ class TasksController < ApplicationController
   def create
     @task = Task.new(task_params)
     if @task.save!
-      assignment = Assignment.create(worker_id: @current_worker.id, task_id: @task.id)
+      Assignment.create(worker_id: @current_worker.id, task_id: @task.id)
       redirect_to tasks_path(locale: locale) + '/' + @task.id.to_s
     else
       @task.destroy
@@ -42,7 +42,6 @@ class TasksController < ApplicationController
   end
 
   def worker?
-    session[:worker] = current_user.workers.first.id #TESTING!!!!
     if session[:worker]
       @current_worker = current_user.workers.find(session[:worker])
     else
