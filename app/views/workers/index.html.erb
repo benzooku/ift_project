@@ -1,0 +1,10 @@
+<table class="table-auto">
+  <% for @worker in @workers do%>
+    <tr>
+      <td>
+        <%= link_to @worker.name, projects_path(locale) + '/' + @project.id.to_s, data: {turbo_action: "replace"} %>
+      </td>
+    </tr>
+  <% end %>
+
+</table>
