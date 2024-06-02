@@ -32,7 +32,7 @@ class ProjectsController < ApplicationController
   # Gibt Projekt anhand von ID weiter
   # Nimmt ID in URL-Parameter
   def show
-    @project = current_user.projects.find(params[:id])
+    @project = current_user.projects.find(params[:project_id])
   rescue ActiveRecord::RecordNotFound
     flash.alert = I18n.t 'projects.notFound'
     redirect_to projects_url

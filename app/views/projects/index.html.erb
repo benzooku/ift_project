@@ -1,10 +1,10 @@
 <table class="table-auto">
     <% for @project in @projects do%>
         <tr>
-            <td>
-                <a href="<%= projects_url(locale) + '/' + @project.id.to_s %>"><%= @project.name %></a>
-            </td>
+          <td>
+            <%= link_to @project.name, projects_path(locale) + '/' + @project.id.to_s, data: {turbo_action: "replace"} %>
+          </td>
         </tr>
-    <% end %>
+      <% end %>
 
 </table>

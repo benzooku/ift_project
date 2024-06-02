@@ -3,6 +3,5 @@
   <%= form.text_area :description, size: "50x5" %> 
   <%= form.datetime_local_field :expected_finish_date %> 
   <%= form.datetime_local_field :start_date %> 
-  <%= collection_select(:task, :project_id, @current_user.projects.all, :id, :name, prompt: true) %>
   <%= form.submit %>
 <% end %>

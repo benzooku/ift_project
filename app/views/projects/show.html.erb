@@ -1,0 +1,5 @@
+<div>
+  <%= @project.name %> </br>
+  <label for="task_list" >Tasks:</label>
+  <%= turbo_frame_tag id="task_list", src: tasks_path %>
+</div>
