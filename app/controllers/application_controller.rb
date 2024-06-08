@@ -17,5 +17,12 @@ class ApplicationController < ActionController::Base
     authenticate_user!
   end
 
+  def worker_gate!
+    @current_worker = current_user.workers.find_by(project_id: params[:project_id])
 
+    if @current_worker.nil?
+      flash[:notice] = I18n.t('projects.notPartOff')  
+      redirect_to projects_path
+    end
+  end
 end

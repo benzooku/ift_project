@@ -2,6 +2,7 @@
 
 class ProjectsController < ApplicationController
   before_action :sign_in_gate!
+  before_action :worker_gate!, only: [:show]
 
   # Giebt Liste von Projekten zurück, mit denen der Nutzer assoziiert ist
   # Nutzer muss angemeldet sein, um diese Seite aufzurufen

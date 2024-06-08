@@ -8,12 +8,18 @@
 
 Permission.create(name: 'adminPerm', description: 'adminPermDesc')
 
-user = User.new(name: 'test', first_name: 'test', email: 'test@gmail.com',
+user = User.new(name: 'test1', first_name: 'test_name1', email: 'test1@gmail.com',
                 password: 'topsecret', password_confirmation: 'topsecret')
 user.skip_confirmation!
 user.save!
 
-project = Project.create(name: 'test')
+user = User.new(name: 'test2', first_name: 'test_name2', email: 'test2@gmail.com',
+                password: 'topsecret', password_confirmation: 'topsecret')
+user.skip_confirmation!
+user.save!
+
+project = Project.create(name: 'test1')
+project = Project.create(name: 'test2')
 
 worker = Worker.new(user_id: user.id, project_id: project.id)
 worker.save!
