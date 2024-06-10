@@ -3,4 +3,13 @@
   <%= @task.description %></br>
   <%= @task.start_date %></br>
   <%= @task.expected_finish_date %></br>
-</div>
+
+  Depends On: </br>
+  <ul>
+    <%= for @dependency in @task_dependencies do %>
+      <li>
+        <%= link_to @dependency.name, tasks_path(locale) + '/' + @dependency.id.to_s %>
+      </li>
+    <% end %>
+  </ul>
+</div>  

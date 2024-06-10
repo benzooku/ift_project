@@ -10,7 +10,7 @@ class Task < ApplicationRecord
   has_many :workers, through: :assignments
 
   has_many :task_dependencies, dependent: :destroy
-  belongs_to :base_task, class_name: "task", optional: true
+  has_many :base_tasks, through: :task_dependencies
 
   has_many :task_notes, dependent: :destroy
 

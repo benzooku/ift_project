@@ -1,13 +1,13 @@
 class TasksController < ApplicationController
   before_action :sign_in_gate!
-  before_action :worker?
+  before_action :worker_gate!
   # Giebt Liste von Tasks zurück, mit denen der Nutzer assoziiert ist
   # Nutzer muss angemeldet sein, um diese Seite aufzurufen
   #
   # Wenn nicht angemeldet, führt auf Anmeldet seite weiter
   # Sichert angefragte Seite, um nach anmeldung zurückzuführen
   def index
-    @tasks = @current_worker.tasks.all
+    @tasks = Project.find(params[:project_id]).tasks.all.order("created_at DESC")
   end
 
   def new
@@ -18,6 +18,9 @@ class TasksController < ApplicationController
     @task = Task.new(task_params)
     @task.project_id = params[:project_id]
     if @task.save!
+      if params[:task][:id]
+        TaskDependency.create(base_task_id: params[:task][:id], task_id: @task.id)
+      end
       Assignment.create(worker_id: @current_worker.id, task_id: @task.id)
       redirect_to tasks_path(locale: locale) + '/' + @task.id.to_s
     else
@@ -30,6 +33,7 @@ class TasksController < ApplicationController
   # Nimmt ID in URL-Parameter
   def show
     @task = @current_worker.tasks.find(params[:task_id])
+    @task_dependencies = @task.base_tasks.all
   rescue ActiveRecord::RecordNotFound
     flash.alert = I18n.t 'tasks.notFound'
     redirect_to projects_url
@@ -37,18 +41,8 @@ class TasksController < ApplicationController
 
   protected
 
-  # Validiert Parameter von POST-Request auf für Project benötigte
+  # Validiert Parameter von POST-Request auf für Task benötigte
   def task_params
     params.require(:task).permit(:name, :description, :expected_finish_date, :start_date)
-  end
-
-  def worker?
-    session[:worker] = current_user.workers.find_by(project_id: params[:project_id]).id
-    if session[:worker]
-      @current_worker = current_user.workers.find(session[:worker])
-    else
-      session[:fall_back_path] = request.path
-      redirect_to select_workers_url
-    end
   end
 end
