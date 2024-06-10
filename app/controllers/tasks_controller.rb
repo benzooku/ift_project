@@ -19,6 +19,7 @@ class TasksController < ApplicationController
     @task.project_id = params[:project_id]
     if @task.save!
       if params[:task][:id]
+        TaskDependency.create(base_task_id: params[:task][:id], task_id: @task.id)
       end
       Assignment.create(worker_id: @current_worker.id, task_id: @task.id)
       redirect_to tasks_path(locale: locale) + '/' + @task.id.to_s
@@ -32,6 +33,7 @@ class TasksController < ApplicationController
   # Nimmt ID in URL-Parameter
   def show
     @task = @current_worker.tasks.find(params[:task_id])
+    @task_dependencies = @task.base_tasks.all
   rescue ActiveRecord::RecordNotFound
     flash.alert = I18n.t 'tasks.notFound'
     redirect_to projects_url
@@ -39,7 +41,7 @@ class TasksController < ApplicationController
 
   protected
 
-  # Validiert Parameter von POST-Request auf für Project benötigte
+  # Validiert Parameter von POST-Request auf für Task benötigte
   def task_params
     params.require(:task).permit(:name, :description, :expected_finish_date, :start_date)
   end
