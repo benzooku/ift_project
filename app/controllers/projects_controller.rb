@@ -10,7 +10,7 @@ class ProjectsController < ApplicationController
   # Wenn nicht angemeldet, führt auf Anmeldet seite weiter
   # Sichert angefragte Seite, um nach anmeldung zurückzuführen
   def index
-    @projects = current_user.projects.all
+    @workers = current_user.workers.all
   end
 
   def new
