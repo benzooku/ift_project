@@ -1,0 +1,8 @@
+<%= form_with model: @task, url: update_tasks_url(task_id: @task), method: :patch do |form| %>
+  <%= form.text_field :name %>
+  <%= form.text_area :description, size: "50x5" %> 
+  <%= form.datetime_local_field :expected_finish_date %> 
+  <%= form.datetime_local_field :start_date %>
+  <%= select(:task, :id, Task.all.order("created_at DESC").collect { |p| [p.name, p.id]}, {prompt: I18n.t('tasks.none')})%> 
+  <%= form.submit %>
+<% end %>

@@ -39,6 +39,21 @@ class TasksController < ApplicationController
     redirect_to projects_url
   end
 
+  def edit
+    @task = @current_worker.tasks.find(params[:task_id])
+    @task_dependencies = @task.base_tasks.all
+  rescue ActiveRecord::RecordNotFound
+    flash.alert = I18n.t 'tasks.notFound'
+    redirect_to projects_url
+  end
+
+  def update
+    @task = @current_worker.tasks.find(params[:task_id])
+    @task_dependencies = @task.base_tasks.all
+    @task.update(name: params[:task][:name], description: params[:task][:description], expected_finish_date: params[:task][:expected_finish_date], start_date: params[:task][:start_date])
+    redirect_to tasks_path(locale: locale) + '/' + @task.id.to_s
+  end
+
   protected
 
   # Validiert Parameter von POST-Request auf für Task benötigte
