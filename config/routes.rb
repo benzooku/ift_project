@@ -27,12 +27,12 @@ Rails.application.routes.draw do
       get '/workers', to: 'workers#index'
       get '/workers/:worker_id', to: 'workers#show'
 
-      get '/tasks/new', to: 'tasks#new'
-      get '/tasks', to: 'tasks#index'
-      post '/tasks', to: 'tasks#create'
-      get '/tasks/:task_id/', to: 'tasks#show'
-      get '/tasks/:task_id/edit', to: 'tasks#edit'
-      put '/tasks/:task_id', to: 'tasks#update'
+      get 'tasks/new', to: 'tasks#new'
+      get 'tasks', to: 'tasks#index'
+      post 'tasks', to: 'tasks#create'
+      get 'tasks/:task_id', to: 'tasks#show'
+      get 'tasks/:task_id/edit', to: 'tasks#edit'
+      patch 'tasks/:task_id', to: 'tasks#update', as: 'update_tasks'
     end
 
 

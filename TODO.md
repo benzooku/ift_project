@@ -4,7 +4,7 @@ Workers:
 Tasks:
     - required für Dependecy setzen
     - Worker auswahl bei new hinzufügen
-    - einfache edit Page machen
+    - edit dependency
 
     Task_Notes:
         - Hinzufügen
