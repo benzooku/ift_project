@@ -6,7 +6,7 @@
 
   Depends On: </br>
   <ul>
-    <%= for @dependency in @task_dependencies do %>
+    <% for @dependency in @task_dependencies do %>
       <li>
         <%= link_to @dependency.name, tasks_path(locale) + '/' + @dependency.id.to_s %>
       </li>

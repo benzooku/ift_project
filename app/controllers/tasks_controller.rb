@@ -18,9 +18,9 @@ class TasksController < ApplicationController
     @task = Task.new(task_params)
     @task.project_id = params[:project_id]
     if @task.save!
-      if params[:task][:id]
-        TaskDependency.create(base_task_id: params[:task][:id], task_id: @task.id)
-      end
+      params[:task][:task_ids].each { |base_task_id|
+        TaskDependency.create(base_task_id: base_task_id, task_id: @task.id)
+      }
       Assignment.create(worker_id: @current_worker.id, task_id: @task.id)
       redirect_to tasks_path(locale: locale) + '/' + @task.id.to_s
     else
@@ -49,8 +49,17 @@ class TasksController < ApplicationController
 
   def update
     @task = @current_worker.tasks.find(params[:task_id])
-    @task_dependencies = @task.base_tasks.all
+    @task_dependencies = @task.task_dependencies.all
     @task.update(name: params[:task][:name], description: params[:task][:description], expected_finish_date: params[:task][:expected_finish_date], start_date: params[:task][:start_date])
+    
+    for dep in @task_dependencies do 
+      dep.delete
+    end
+
+    params[:task][:task_ids].each { |base_task_id|
+      TaskDependency.create(base_task_id: base_task_id, task_id: @task.id)
+    }
+
     redirect_to tasks_path(locale: locale) + '/' + @task.id.to_s
   end
 
