@@ -22,3 +22,4 @@ COPY package.json yarn.lock ./
 
 COPY . ./
 
+RUN bundle install
