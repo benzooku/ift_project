@@ -13,5 +13,4 @@ class Task < ApplicationRecord
   has_many :base_tasks, through: :task_dependencies
 
   has_many :task_notes, dependent: :destroy
-
 end

@@ -1,0 +1,8 @@
+<%= turbo_frame_tag dom_id(task_note) do %>
+  <li>
+    <div>
+      <h2><%= task_note.worker.user.name %></h2>
+      <%= task_note.content %>
+    </div>
+  </li> 
+<% end %>

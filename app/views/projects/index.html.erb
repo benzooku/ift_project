@@ -5,7 +5,9 @@
             <%  %>
             <%= link_to @worker.project.name, projects_path(locale) + '/' + @worker.project.id.to_s, data: {turbo_action: "replace"} %>
             <% @task = @worker.tasks.order("created_at").last %>
-            <%= link_to @task.name, tasks_path(locale, project_id: @worker.project.id) + '/' + @task.id.to_s, data: {turbo_action: "replace"} %>
+            <% if !@task.nil? %>
+              <%= link_to @task.name, tasks_path(locale, project_id: @worker.project.id) + '/' + @task.id.to_s, data: {turbo_action: "replace"} %>
+            <% end %>
           </td>
         </tr>
       <% end %>
