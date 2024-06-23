@@ -5,4 +5,7 @@ class TaskNote < ApplicationRecord
   validates :content, presence: true, length: { in: 1..500 }
   
 
-  end
+  after_create_commit -> {broadcast_prepend_to "task_notes", partial: "task_notes/task_note", locals: { task_note: self } }
+
+end
+
