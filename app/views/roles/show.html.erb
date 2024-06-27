@@ -1,0 +1,17 @@
+<%= turbo_stream_from "role_notes" %>
+<div>
+  <%= @role.name %></br>
+  <%= @role.rank %></br>
+
+  Permissions: </br>
+  <ul>
+    <% for @permission in Permission.all do %>
+      <li id="<% if @permissions.include?(@permission) %>
+        enabled
+      <% end %>">
+        <%= @permission.name %>
+        <%= @permission.description %>
+      </li>
+    <% end %>
+  </ul>
+</div>  

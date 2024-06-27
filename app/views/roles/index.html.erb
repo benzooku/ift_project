@@ -1,0 +1,11 @@
+<%= turbo_frame_tag id="role_list" do %>
+  <table class="table-auto">
+    <% for @role in @roles do%>
+      <tr>
+        <td>
+          <%= link_to @role.name, roles_path(locale) + '/' + @role.id.to_s, data: {turbo_frame: "_top"} %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+<% end %>

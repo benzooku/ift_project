@@ -8,5 +8,5 @@ class Role < ApplicationRecord
   has_many :permits, dependent: :destroy
   has_many :permissions, through: :permits
 
-  belongs_to :project, foreign_key: true
+  belongs_to :project
 end

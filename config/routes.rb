@@ -35,6 +35,13 @@ Rails.application.routes.draw do
       patch 'tasks/:task_id', to: 'tasks#update', as: 'update_tasks'
 
       post 'tasks/:task_id', to: 'task_notes#create', as: 'create_task_note'
+      
+      get 'roles/new', to: 'roles#new'
+      get 'roles', to: 'roles#index'
+      post 'roles', to: 'roles#create'
+      get 'roles/:role_id', to: 'roles#show'
+      get 'roles/:role_id/edit', to: 'roles#edit'
+      patch 'roles/:role_id', to: 'roles#update', as: 'update_roles'
     end
 
 

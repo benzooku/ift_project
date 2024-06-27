@@ -1,6 +1,5 @@
 class MessageRecipient < ApplicationRecord
-  belongs_to :user, foreign_key: true
-  belongs_to :group, foreign_key: true
-  belongs_to :message, foreign_key: true
-
+  belongs_to :user
+  belongs_to :group
+  belongs_to :message
 end
