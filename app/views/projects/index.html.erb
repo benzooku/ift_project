@@ -1,11 +1,11 @@
 <table class="table-auto">
     <% for @worker in @workers do%>
         <tr>
-          <td>
-            <%  %>
+          <td> 
             <%= link_to @worker.project.name, projects_path(locale) + '/' + @worker.project.id.to_s, data: {turbo_action: "replace"} %>
+
             <% @task = @worker.tasks.order("created_at").last %>
-            <% if !@task.nil? %>
+            <% unless @task.nil? %>
               <%= link_to @task.name, tasks_path(locale, project_id: @worker.project.id) + '/' + @task.id.to_s, data: {turbo_action: "replace"} %>
             <% end %>
           </td>
