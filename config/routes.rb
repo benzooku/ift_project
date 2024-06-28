@@ -33,6 +33,8 @@ Rails.application.routes.draw do
       get 'tasks/:task_id', to: 'tasks#show'
       get 'tasks/:task_id/edit', to: 'tasks#edit'
       patch 'tasks/:task_id', to: 'tasks#update', as: 'update_tasks'
+
+      post 'tasks/:task_id', to: 'task_notes#create', as: 'create_task_note'
     end
 
 

@@ -1,3 +1,4 @@
+<%= turbo_stream_from "task_notes" %>
 <div>
   <%= @task.name %></br>
   <%= @task.description %></br>
@@ -9,6 +10,24 @@
     <% for @dependency in @task_dependencies do %>
       <li>
         <%= link_to @dependency.name, tasks_path(locale) + '/' + @dependency.id.to_s %>
+      </li>
+    <% end %>
+  </ul>
+
+  Notes: </br>
+  
+  <%= form_with model: @task_note, url: create_task_note_url, data: { turbo_method: "post"}  do |form| %>
+    <%= form.text_area :content, size: "50x5" %> 
+    <%= form.submit%>
+  <% end %>
+
+  <ul id="task_notes">
+    <% for @note in @task_notes do %>
+      <li>
+        <div>
+          <h2><%= @note.worker.user.name %></h2>
+          <%= @note.content %>
+        </div>
       </li>
     <% end %>
   </ul>

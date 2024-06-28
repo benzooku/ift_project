@@ -34,6 +34,8 @@ class TasksController < ApplicationController
   def show
     @task = @current_worker.tasks.find(params[:task_id])
     @task_dependencies = @task.base_tasks.all
+    @task_notes = @task.task_notes.all.order("created_at DESC")
+    @task_note = TaskNote.new
   rescue ActiveRecord::RecordNotFound
     flash.alert = I18n.t 'tasks.notFound'
     redirect_to projects_url
