@@ -7,7 +7,7 @@ class TasksController < ApplicationController
   # Wenn nicht angemeldet, führt auf Anmeldet seite weiter
   # Sichert angefragte Seite, um nach anmeldung zurückzuführen
   def index
-    @tasks = Project.find(params[:project_id]).tasks.all.order("created_at DESC")
+    @tasks = @current_worker.tasks.all.order("created_at DESC")
   end
 
   def new
