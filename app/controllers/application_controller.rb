@@ -25,4 +25,20 @@ class ApplicationController < ActionController::Base
       redirect_to projects_path
     end
   end
+
+  def permission_gate(*permissions)
+    worker_gate! 
+    @roles = @current_worker.roles.all
+    @user_perms = []
+    for @role in @roles do
+      for @perm in @role.permissions.all do
+        @user_perms.push(@perm.id)
+      end
+    end
+    if (permissions - @user_perms).length != 0
+      flash[:notice] = I18n.t('permissions.insufficient')
+      redirect_to projects_path
+    end
+
+  end
 end

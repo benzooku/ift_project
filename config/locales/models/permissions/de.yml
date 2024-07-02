@@ -1,4 +1,6 @@
 de:
+  permissions:
+    insufficient: "Nicht genügend Berechtigungen!"
   admin:
     name: "Administrator"
     desc: "Giebt alle Rechte!!!"

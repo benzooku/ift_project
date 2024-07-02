@@ -1,5 +1,6 @@
 class WorkersController < ApplicationController
   before_action :sign_in_gate!
+  before_action :admin_permission
   
   def select; end
 
@@ -54,4 +55,8 @@ class WorkersController < ApplicationController
     RoleAssignment.find(params[:role_id]).delete
   end
 
+
+  def admin_permission
+    permission_gate(1)
+  end
 end
