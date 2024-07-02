@@ -1,8 +1,8 @@
 <table class="table-auto">
-  <% for @worker in @workers do%>
+  <% for @user in @users do%>
     <tr>
       <td>
-        <%= link_to @worker.name, projects_path(locale) + '/' + @project.id.to_s, data: {turbo_action: "replace"} %>
+        <%= link_to @user.name, workers_path(locale) + '/' + @user.workers.find_by(project_id: params[:project_id]).id.to_s, data: {turbo_action: "replace"} %>
       </td>
     </tr>
   <% end %>

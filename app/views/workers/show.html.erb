@@ -1,0 +1,21 @@
+<div>
+  <%= @user.name %>
+
+  
+  <ul>
+    <% if @roles.length > 0 %>
+      <% for @role in @roles do %>
+        <li>
+          <%= @role.name %> 
+          <%= link_to "X", delete_role_workers_path(role_id: @role.role_assignments.find_by(worker_id: @worker).id), data: { turbo_method: "delete" } %>
+        </li>
+      <% end %>
+    <% end %>
+  </ul>
+
+  <%= form_with model: @role_assignment, url: add_role_workers_url,  data: { turbo_method: "post"}  do |form| %>
+    <%= form.select(:role_ids, Role.all.order("rank DESC").collect { |p| [p.name, p.id]},
+                  { multiple: true} )%> 
+    <%= form.submit %>
+  <% end %>
+</div>
