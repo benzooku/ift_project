@@ -47,7 +47,7 @@ Rails.application.routes.draw do
       patch 'roles/:role_id', to: 'roles#update', as: 'update_roles'
     end
 
-
+    get 'impressum', to: 'static_pages#impressum', as: 'impressum_static'
     get 'landing', to: 'landing#index'
   end
   get '/:locale' => 'landing#index'
