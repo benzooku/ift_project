@@ -16,16 +16,19 @@ Rails.application.routes.draw do
     get 'landing', to: 'landing#index'
 
 
-    get '/projects/new', to: 'projects#new'
-    get '/projects', to: 'projects#index'
-    post '/projects', to: 'projects#create'
+    get 'projects/new', to: 'projects#new'
+    get 'projects', to: 'projects#index'
+    post 'projects', to: 'projects#create'
     
-    scope '/projects/:project_id/' do
+    scope 'projects/:project_id/' do
       get '/', to: 'projects#show'
-      get '/add_user', to: 'workers#new'
-      post '/workers', to: 'workers#create'
-      get '/workers', to: 'workers#index'
-      get '/workers/:worker_id', to: 'workers#show'
+      get 'workers/add', to: 'workers#new'
+      post 'workers', to: 'workers#create'
+      get 'workers', to: 'workers#index'
+      get 'workers/:worker_id', to: 'workers#show'
+
+      post '/workers/:worker_id', to: 'workers#add_role', as: 'add_role_workers' 
+      delete '/workers/:worker_id/:role_id', to: 'workers#delete_role', as: 'delete_role_workers'
 
       get 'tasks/new', to: 'tasks#new'
       get 'tasks', to: 'tasks#index'
@@ -35,9 +38,16 @@ Rails.application.routes.draw do
       patch 'tasks/:task_id', to: 'tasks#update', as: 'update_tasks'
 
       post 'tasks/:task_id', to: 'task_notes#create', as: 'create_task_note'
+      
+      get 'roles/new', to: 'roles#new'
+      get 'roles', to: 'roles#index'
+      post 'roles', to: 'roles#create'
+      get 'roles/:role_id', to: 'roles#show'
+      get 'roles/:role_id/edit', to: 'roles#edit'
+      patch 'roles/:role_id', to: 'roles#update', as: 'update_roles'
     end
 
-
+    get 'impressum', to: 'static_pages#impressum', as: 'impressum_static'
     get 'landing', to: 'landing#index'
   end
   get '/:locale' => 'landing#index'

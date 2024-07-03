@@ -55,7 +55,11 @@ POSTGRES_NAME_PRODUCTION=proxima_prdoduction
 POSTGRES_USER=proxima
 POSTGRES_PASSWORD=<Hier ein Passwort eingeben>
 POSTGRES_HOST=database
+
 REDIS_HOST=redis
+REDIS_DB=0
+REDIS_URL=redis://172.20.0.2
+REDIS_PORT=6379
 ```
 
 Starte die Docker mit docker-compose

@@ -1,0 +1,8 @@
+<%= form_with model: @role, url: roles_url, method: :post do |form| %>
+  <%= form.text_field :name %>
+  <%= form.number_field :rank %> 
+  <%= form.select(:permission_ids, Permission.all.collect { |p| [p.name, p.id]},
+                  { multiple: true} )%> 
+  <%= form.submit %>
+<% end %>
+  
