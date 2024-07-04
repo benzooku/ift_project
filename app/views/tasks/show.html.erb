@@ -16,8 +16,8 @@
 
   Notes: </br>
   
-  <%= form_with model: @task_note, url: create_task_note_url, data: { turbo_method: "post"}  do |form| %>
-    <%= form.text_area :content, size: "50x5" %> 
+  <%= form_with model: @task_note, url: create_task_note_url, data: { turbo_method: "post"}  do |form|%>
+    <%= form.text_area :content, size: "50x5", placeholder: "Add Notes" %> 
     <%= form.submit%>
   <% end %>
 

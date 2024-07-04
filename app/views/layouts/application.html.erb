@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>IftWebsite</title>
+    <title>Proxima Plan</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -13,6 +13,10 @@
 
   <body>
     <main>
+    <% if(!params[:project_id].nil?) %>
+      <%= render "projects/project_header" %>
+    <%end%>
+    
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
       <%= yield %>
