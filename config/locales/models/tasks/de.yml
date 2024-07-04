@@ -1,3 +1,15 @@
 de:
   tasks:
     none: "Task nicht gefunden!"
+
+  errors:
+    attributes:
+      name:
+        blank: "Name kann nicht leer sein!! >:C"
+        too_short: "Name zu kurtz!!"
+      description:
+        too_short: "Beschreibung zu kurtz!!!"
+      expected_finish_date:
+        blank: "Geben sie ein Enddatum an!!"
+      start_date:
+        blank: "Geben sie ein Startdatum an!!"
