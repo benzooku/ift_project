@@ -13,14 +13,6 @@
 
   <body>
     <main>
-      <header> 
-        Test
-        <% if !current_user.nil? %>
-          <button class="float-right" href=<%= sign_out_path %> >Log Out</button>
-        <% else %>          
-          <%= link_to "Log In", new_user_session_path %>
-        <% end %>
-      </header>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
       <%= yield %>

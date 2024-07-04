@@ -37,6 +37,3 @@ en:
   # Register page
   waiting_for_confirmation: "Currently waiting confirmation for: "
   cancel_account: "Cancel my account"
-
-  general:
-    log_in: "Log In"
