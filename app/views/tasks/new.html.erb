@@ -1,14 +1,13 @@
 <div class="row">
-  <%= form_with model: @task, url: tasks_url, method: :post do |form| %>
-    <%= form.text_field :name, placeholder: "Task name", class:"" %>
-    <%= form.text_area :description, placeholder: "Description",size: "50x5" %> 
-    <%= form.datetime_local_field :expected_finish_date %> 
-    <%= form.datetime_local_field :start_date %>
+  <%= form_with model: @task, url: tasks_url, method: :post do |form| %><br>
+    <%= form.text_field :name, placeholder: "Task name", class:"" %><br>
+    <%= form.text_area :description, placeholder: "Add Description",size: "50x5" %> <br>
+    <%= form.datetime_local_field :expected_finish_date %><br> 
+    <%= form.datetime_local_field :start_date %><br>
     <%= form.select(:task_ids, Task.all.order("created_at DESC").collect { |p| [p.name, p.id]},
                     { prompt: I18n.t('tasks.none')},
-                    { multiple: true} )%> 
-    <button class="btn">                
-    <%= form.submit %>
-    </button>
+                    { multiple: true} )%> <br>              
+    <%= form.submit 'Create Task', class: '' %>
+
   <% end %>
 </div>
