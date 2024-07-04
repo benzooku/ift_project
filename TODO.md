@@ -8,3 +8,10 @@ Tasks:
 
     Task_Notes:
         - Hinzufügen
+
+
+Locales sind in config/locales/
+dort für generelles in /default
+und sonst ins richtige model
+
+t('general.log_in')
