@@ -23,3 +23,7 @@ project = Project.create(name: 'test2')
 
 worker = Worker.new(user_id: user.id, project_id: project.id)
 worker.save!
+
+role = Role.create(project_id: prj.id, name: 'Admin', rank: 1000)
+permit = Permit.create(role_id: role.id, permission_id: 1)
+role_assignment = RoleAssignment.create(worker_id: worker.id, role_id: role.id)
