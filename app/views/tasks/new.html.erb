@@ -1,13 +1,20 @@
 <div class="row">
-  <%= form_with model: @task, url: tasks_url, method: :post do |form| %><br>
-    <%= form.text_field :name, placeholder: "Task name", class:"" %><br>
-    <%= form.text_area :description, placeholder: "Add Description",size: "50x5" %> <br>
-    <%= form.datetime_local_field :expected_finish_date %><br> 
-    <%= form.datetime_local_field :start_date %><br>
-    <%= form.select(:task_ids, Task.all.order("created_at DESC").collect { |p| [p.name, p.id]},
-                    { prompt: I18n.t('tasks.none')},
-                    { multiple: true} )%> <br>              
-    <%= form.submit 'Create Task', class: '' %>
+  
+    <%= form_with model: @task, url: tasks_url, method: :post do |form| %><br>
+
+    <%= form.text_field :name, placeholder: "Task name", class:"mx-2 my-2 rounded-lg" %><br>
+    <%= form.text_area :description, placeholder: "Add Description",size: "50x5",class:"mx-2 my-2 rounded-lg" %> <br>
+    <div class="my-2">Finish date:</div>
+    <%= form.datetime_local_field :expected_finish_date, class:"mx-2 my-2 rounded-lg" %><br> 
+    <div class="my-2">Start date:</div>
+    <%= form.datetime_local_field :start_date, class:"mx-2 my-2 rounded-lg" %><br>
+    <br>
+    <%= form.select(:task_ids,
+                      Task.all.order("created_at DESC").collect { |p| [p.name, p.id]},
+                      { prompt: I18n.t('tasks.none')},
+                      { multiple: true}
+                    ) %> <br>              
+    <%= form.submit 'Create Task', class:"bg-violet-700 hover:bg-violet-800 text-white font-bold py-2 px-4 rounded mx-4 mt-2" %>
 
   <% end %>
 </div>
