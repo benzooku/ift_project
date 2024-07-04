@@ -34,7 +34,7 @@
     <% for @worker in @workers do%>
         <tr>
           <td> 
-            <%= link_to @worker.project.name, projects_path(locale) + '/' + @worker.project.id.to_s, data: {turbo_action: "replace"} %>
+            <%= link_to @worker.project.name, projects_path(locale) + '/' + @worker.project.id.to_s %>
 
             <% @task = @worker.tasks.order("created_at").last %>
             <% unless @task.nil? %>
