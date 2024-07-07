@@ -1,6 +1,6 @@
 <%= form_with model: @task, url: update_tasks_url(task_id: @task), method: :patch do |form| %> <br>
-  <%= form.text_field :name, class:"mx-2 my-2 rounded-lg" %> <br>
-  <%= form.text_area :description, size: "50x5", class:"mx-2 my-2 rounded-lg" %> <br>
+  <%= form.text_field :name, placeholder: "Task name",class:"mx-2 my-2 rounded-lg" %> <br>
+  <%= form.text_area :description, placeholder: "Add Description", size: "50x5", class:"mx-2 my-2 rounded-lg" %> <br>
   <div class="my-2">Finish date:</div>
   <%= form.datetime_local_field :expected_finish_date, class:"mx-2 my-2 rounded-lg" %> <br>
   <div class="my-2">Start date:</div>
