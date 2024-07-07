@@ -1,10 +1,12 @@
-<%= form_with model: @task, url: update_tasks_url(task_id: @task), method: :patch do |form| %>
-  <%= form.text_field :name %>
-  <%= form.text_area :description, size: "50x5" %> 
-  <%= form.datetime_local_field :expected_finish_date %> 
-  <%= form.datetime_local_field :start_date %>
-  <%= form.select(:task_ids, Task.all.order("created_at DESC").collect { |p| [p.name, p.id]},
+<%= form_with model: @task, url: update_tasks_url(task_id: @task), method: :patch do |form| %> <br>
+  <%= form.text_field :name, class:"mx-2 my-2 rounded-lg" %> <br>
+  <%= form.text_area :description, size: "50x5", class:"mx-2 my-2 rounded-lg" %> <br>
+  <div class="my-2">Finish date:</div>
+  <%= form.datetime_local_field :expected_finish_date, class:"mx-2 my-2 rounded-lg" %> <br>
+  <div class="my-2">Start date:</div>
+  <%= form.datetime_local_field :start_date, class:"mx-2 my-2 rounded-lg" %> <br>
+  <%= form.select(:task_ids, Task.all.order("created_at DESC").collect { |p| [p.name, p.id]}, 
                   { prompt: I18n.t('tasks.none')},
-                  { multiple: true} )%> 
-  <%= form.submit %>
+                  { multiple: true} )%> <br>
+  <%= form.submit 'Update Task' , class:"bg-violet-700 hover:bg-violet-800 text-white font-bold py-2 px-4 rounded mx-4 mt-2" %> 
 <% end %>
