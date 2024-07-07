@@ -34,7 +34,7 @@ Rails.application.routes.draw do
       get 'tasks', to: 'tasks#index'
       post 'tasks', to: 'tasks#create'
       get 'tasks/:task_id', to: 'tasks#show'
-      get 'tasks/:task_id/edit', to: 'tasks#edit'
+      get 'tasks/:task_id/edit', to: 'tasks#edit', as: 'edit_task'
       patch 'tasks/:task_id', to: 'tasks#update', as: 'update_tasks'
       
       post 'tasks/:task_id/add_worker', to: 'tasks#add_worker', as: 'add_user_to_task'
