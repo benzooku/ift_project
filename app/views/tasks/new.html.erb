@@ -10,7 +10,7 @@
     <%= form.datetime_local_field :start_date, class:"mx-2 my-2 rounded-lg" %><br>
     <br>
     <%= form.select(:task_ids,
-                      Task.all.order("created_at DESC").collect { |p| [p.name, p.id]},
+                      Project.find(params[:project_id]).tasks.all.order("created_at DESC").collect { |p| [p.name, p.id]},
                       { prompt: I18n.t('tasks.none')},
                       { multiple: true}
                     ) %> <br>              
