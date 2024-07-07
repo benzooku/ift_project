@@ -36,7 +36,8 @@ Rails.application.routes.draw do
       get 'tasks/:task_id', to: 'tasks#show'
       get 'tasks/:task_id/edit', to: 'tasks#edit'
       patch 'tasks/:task_id', to: 'tasks#update', as: 'update_tasks'
-
+      
+      post 'tasks/:task_id/add_worker', to: 'tasks#add_worker', as: 'add_user_to_task'
       post 'tasks/:task_id', to: 'task_notes#create', as: 'create_task_note'
       
       get 'roles/new', to: 'roles#new'

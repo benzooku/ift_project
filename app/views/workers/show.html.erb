@@ -14,7 +14,7 @@
   </ul>
 
   <%= form_with model: @role_assignment, url: add_role_workers_url,  data: { turbo_method: "post"}  do |form| %>
-    <%= form.select(:role_ids, Role.all.order("rank DESC").collect { |p| [p.name, p.id]},
+    <%= form.select(:role_ids, Project.find(params[:project_id]).roles.all.order("rank DESC").collect { |p| [p.name, p.id]},
                   { multiple: true} )%> 
     <%= form.submit %>
   <% end %>

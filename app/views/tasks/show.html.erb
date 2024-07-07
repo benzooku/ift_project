@@ -14,6 +14,18 @@
     <% end %>
   </ul>
 
+  <div>
+    Add User:
+    <%= form_with url: add_user_to_task_url, data: { turbo_method: "post"}  do |form|%>
+        
+    <%= form.select(:user_ids,
+                      @users.collect { |p| [p.email, p.id]},
+                      {}, multiple: true
+                    ) %> <br>              
+    <%= form.submit%>
+  <% end %>
+
+  </div>
   Notes: </br>
   
   <%= form_with model: @task_note, url: create_task_note_url, data: { turbo_method: "post"}  do |form|%>

@@ -32,6 +32,7 @@ class TasksController < ApplicationController
   # Gibt Projekt anhand von ID weiter
   # Nimmt ID in URL-Parameter
   def show
+    @users = @current_worker.project.users.where.not(id: @current_user.id)
     @task = @current_worker.tasks.find(params[:task_id])
     @task_dependencies = @task.base_tasks.all
     @task_notes = @task.task_notes.all.order("created_at DESC")
@@ -63,6 +64,17 @@ class TasksController < ApplicationController
     }
 
     redirect_to tasks_path(locale: locale) + '/' + @task.id.to_s
+  end
+
+  def add_worker
+    @task = Project.find(params[:project_id]).tasks.find(params[:task_id])
+    for user in params[:user_ids] do
+      if user != ""
+        @worker = User.find(user).workers.find_by(project_id: params[:project_id])
+        Assignment.create!(task_id: @task.id, worker_id: @worker.id)
+      end
+    end
+
   end
 
   protected
